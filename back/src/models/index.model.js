@@ -1,3 +1,4 @@
+const Alumnos = require("./entitys/Alumnos");
 const Calificaciones = require("./entitys/Calificaciones");
 const Clases = require("./entitys/Clases");
 const Cursos = require("./entitys/Cursos");
@@ -7,21 +8,21 @@ const Inscripciones = require("./entitys/Inscripciones");
 const MaterialesEstudio = require("./entitys/MaterialEstudio");
 const Mensajes = require("./entitys/Mensajes");
 const Pagos = require("./entitys/Pagos");
-const Usuarios = require("./entitys/Usuarios");
+const Profesor = require("./entitys/Profesor");
 
-Usuarios.belongsToMany(Cursos, {
+Alumnos.belongsToMany(Cursos, {
   through: Inscripciones,
   foreignKey: "alumno_id",
   otherKey: "curso_id",
 });
-Cursos.belongsToMany(Usuarios, {
+Cursos.belongsToMany(Alumnos, {
   through: Inscripciones,
   foreignKey: "curso_id",
   otherKey: "alumno_id",
 });
 ////////////
-Usuarios.hasMany(Cursos);
-Cursos.belongsToMany(Usuarios);
+Cursos.belongsTo(Profesor, { foreignKey: "profesor_id" });
+Profesor.hasMany(Cursos, { foreignKey: "profesor_id" });
 ////////////
 Cursos.hasMany(Clases, {
   foreignKey: "curso_id",
@@ -48,35 +49,35 @@ Evaluaciones.hasMany(Calificaciones, {
 });
 Calificaciones.belongsTo(Evaluaciones);
 ////////////
-Usuarios.hasMany(Calificaciones, {
+Alumnos.hasMany(Calificaciones, {
   foreignKey: "alumno_id",
 });
-Calificaciones.belongsTo(Usuarios);
+Calificaciones.belongsTo(Alumnos);
 ////////////
-models.Usuario.hasMany(models.Mensaje, {
+Profesor.hasMany(Mensajes, {
   foreignKey: "remitente_id",
 });
 
-models.Usuario.hasMany(models.Mensaje, {
+Alumnos.hasMany(Mensajes, {
   foreignKey: "destinatario_id",
 });
 
-models.Mensaje.belongsTo(models.Usuario, {
+Mensajes.belongsTo(Alumnos, {
   foreignKey: "remitente_id",
 });
 
-models.Mensaje.belongsTo(models.Usuario, {
+Mensajes.belongsTo(Profesor, {
   foreignKey: "destinatario_id",
 });
 ////////
 
-Usuarios.hasMany(Pagos, {
+Alumnos.hasMany(Pagos, {
   foreignKey: "alumno_id",
 });
-Pagos.belongsTo(Usuarios);
+Pagos.belongsTo(Alumnos);
 
 module.exports = {
-  Usuarios,
+  Alumnos,
   Cursos,
   Clases,
   Grabaciones,
@@ -86,12 +87,13 @@ module.exports = {
   MaterialesEstudio,
   Mensajes,
   Pagos,
+  Profesor,
 };
 
 /*
 users ⇄ courses (N:M) → Tabla enrollments. 👍
 
-users (profesores) ⇄ courses (1:N).👍
+users (profesores) ⇄ courses (1:N).
 
 courses ⇄ classes (1:N).👍
 

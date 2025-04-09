@@ -6,7 +6,8 @@ fechaEnvio
  */
 const { DataTypes } = require("sequelize");
 const conectionDB = require("../../db/dbConection");
-
+const Alumnos = require("./Alumnos");
+const Profesor = require("./Profesor");
 const Mensajes = conectionDB.define("Mensajes", {
   id: {
     type: DataTypes.UUID,
@@ -16,14 +17,14 @@ const Mensajes = conectionDB.define("Mensajes", {
   remitente_id: {
     type: DataTypes.UUID,
     references: {
-      model: "Usuarios",
+      model: Profesor,
       key: "id",
     },
   },
   destinatario_id: {
     type: DataTypes.UUID,
     references: {
-      model: "Usuarios",
+      model: Alumnos,
       key: "id",
     },
   },

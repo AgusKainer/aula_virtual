@@ -6,6 +6,7 @@ fechaSubida
 
 const { DataTypes } = require("sequelize");
 const conectionDB = require("../../db/dbConection");
+const Clases = require("./Clases");
 
 const Grabaciones = conectionDB.define("Grabaciones", {
   id: {
@@ -16,7 +17,7 @@ const Grabaciones = conectionDB.define("Grabaciones", {
   clase_id: {
     type: DataTypes.UUID,
     references: {
-      model: "Clases",
+      model: Clases,
       key: "id",
     },
   },

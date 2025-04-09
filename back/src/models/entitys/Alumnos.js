@@ -10,7 +10,7 @@ fecha_ingreso
 const { Sequelize, DataTypes } = require("sequelize");
 const conectionDB = require("../../db/dbConection");
 
-const Usuarios = conectionDB.define("Usuarios", {
+const Alumnos = conectionDB.define("Alumnos", {
   id: {
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
@@ -29,7 +29,8 @@ const Usuarios = conectionDB.define("Usuarios", {
     type: DataTypes.STRING,
   },
   rol: {
-    type: DataTypes.ENUM("alumno", "profesor", "admin"),
+    type: DataTypes.STRING,
+    defaultValue: "alumno",
   },
   fechaIngreso: {
     type: DataTypes.DATE,
@@ -37,4 +38,4 @@ const Usuarios = conectionDB.define("Usuarios", {
   },
 });
 
-module.exports = Usuarios;
+module.exports = Alumnos;

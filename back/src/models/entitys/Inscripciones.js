@@ -6,6 +6,8 @@ estado(activo, finalizado, dado de baja)
 */
 const { DataTypes } = require("sequelize");
 const conectionDB = require("../../db/dbConection");
+const Alumnos = require("./Alumnos");
+const Cursos = require("./Cursos");
 
 const Inscripciones = conectionDB.define("Inscripciones", {
   id: {
@@ -16,14 +18,14 @@ const Inscripciones = conectionDB.define("Inscripciones", {
   alumno_id: {
     type: DataTypes.UUID,
     references: {
-      model: "Alumnos",
+      model: Alumnos,
       key: "id",
     },
   },
   curso_id: {
     type: DataTypes.UUID,
     references: {
-      model: "Cursos",
+      model: Cursos,
       key: "id",
     },
   },

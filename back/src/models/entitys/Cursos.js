@@ -1,13 +1,6 @@
-/*
-nombre
-descripcion
-profesor_id
-fechaInicio
-fechaFin
-*/
-
 const { DataTypes } = require("sequelize");
-const conectionDB = require("../db/dbConection");
+const conectionDB = require("../../db/dbConection");
+const Profesor = require("./Profesor");
 
 const Cursos = conectionDB.define("Cursos", {
   id: {
@@ -18,10 +11,10 @@ const Cursos = conectionDB.define("Cursos", {
   descripcion: {
     type: DataTypes.TEXT,
   },
-  profeosr_id: {
-    tyoe: DataTypes.UUID,
+  profesor_id: {
+    type: DataTypes.UUID,
     references: {
-      model: "Usuarios",
+      model: Profesor,
       key: "id",
     },
   },

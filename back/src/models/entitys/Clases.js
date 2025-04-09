@@ -8,6 +8,7 @@ grabacion_id
 
 const { DataTypes } = require("sequelize");
 const conectionDB = require("../../db/dbConection");
+const Cursos = require("./Cursos");
 
 const Clases = conectionDB.define("Clases", {
   id: {
@@ -18,7 +19,7 @@ const Clases = conectionDB.define("Clases", {
   curso_id: {
     type: DataTypes.UUID,
     references: {
-      model: "Cursos",
+      model: Cursos,
       key: "id",
     },
   },

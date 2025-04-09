@@ -7,6 +7,7 @@ fechaVencimiento
 */
 const { DataTypes } = require("sequelize");
 const conectionDB = require("../../db/dbConection");
+const Cursos = require("./Cursos");
 
 const Evaluaciones = conectionDB.define("Evaluaciones", {
   id: {
@@ -17,7 +18,7 @@ const Evaluaciones = conectionDB.define("Evaluaciones", {
   curso_id: {
     type: DataTypes.UUID,
     references: {
-      model: "Cursos",
+      model: Cursos,
       key: "id",
     },
   },
