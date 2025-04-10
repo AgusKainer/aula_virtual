@@ -1,4 +1,4 @@
-const { Alumnos } = require("../../models/index.model");
+const { Alumnos } = require("../../../models/index.model");
 
 const createAlumnController = async ({ nombre, email, password, rol }) => {
   return await Alumnos.create({

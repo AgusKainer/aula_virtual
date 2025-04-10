@@ -6,7 +6,7 @@ const PORT = process.env.PORT;
 const server = () => {
   try {
     app.listen(PORT);
-    db.sync();
+    db.sync({ force: true });
     console.log("Database connected successfully");
 
     console.log(`Server is running on port ${PORT}`);

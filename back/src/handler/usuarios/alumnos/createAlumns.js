@@ -1,4 +1,6 @@
-const { createAlumnController } = require("../../controller/index.controller");
+const {
+  createAlumnController,
+} = require("../../../controller/index.controller");
 
 const createAlumnHandler = async (req, res) => {
   const { nombre, email, password, rol } = req.body;

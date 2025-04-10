@@ -1,4 +1,4 @@
-const { Alumnos } = require("../../models/index.model");
+const { Alumnos } = require("../../../models/index.model");
 
 const allAlumnController = async () => {
   return await Alumnos.findAll({
