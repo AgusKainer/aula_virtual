@@ -6,6 +6,9 @@ const deleteAlumnHandler = require("./usuarios/alumnos/deleteAlumn");
 
 // PROFESOR
 const allProfesorHandler = require("./usuarios/profesor/allProfesor");
+const createPrfesorHandler = require("./usuarios/profesor/createProfesor");
+const updateProfesorHandler = require("./usuarios/profesor/updateProfesor");
+const profesorIdHandler = require("./usuarios/profesor/profesorID");
 
 module.exports = {
   allAlumnHandler,
@@ -15,4 +18,7 @@ module.exports = {
   deleteAlumnHandler,
   //PROFESOR
   allProfesorHandler,
+  createPrfesorHandler,
+  updateProfesorHandler,
+  profesorIdHandler,
 };

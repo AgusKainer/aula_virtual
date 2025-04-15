@@ -2,7 +2,7 @@ const {
   createAlumnController,
 } = require("../../../controller/index.controller");
 
-const createAlumnHandler = async (req, res) => {
+const createAlumnHandler = async (req, res, next) => {
   const { nombre, email, password, rol } = req.body;
 
   try {
@@ -15,7 +15,7 @@ const createAlumnHandler = async (req, res) => {
 
     return res.status(201).json(newAlumn);
   } catch (error) {
-    return res.status(500).json({ error: error.message });
+    next(error);
   }
 };
 
