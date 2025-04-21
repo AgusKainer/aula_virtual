@@ -1,3 +1,4 @@
+const Administrador = require("./entitys/Administrador");
 const Alumnos = require("./entitys/Alumnos");
 const Calificaciones = require("./entitys/Calificaciones");
 const Clases = require("./entitys/Clases");
@@ -77,6 +78,7 @@ Alumnos.hasMany(Pagos, {
 Pagos.belongsTo(Alumnos);
 
 module.exports = {
+  Administrador,
   Alumnos,
   Cursos,
   Clases,
