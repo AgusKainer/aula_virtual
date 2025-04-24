@@ -8,6 +8,6 @@ router.use("/alumnos", routerAlumn);
 // PROFESORES
 router.use("/profesores", routerProfesor);
 //ADMIN
-router.use("/admin", routerAdmin);
+router.use("/admins", routerAdmin);
 
 module.exports = router;
